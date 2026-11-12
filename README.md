@@ -20,9 +20,10 @@ Minimal Ralph Wiggum loop plugin for Google Antigravity (App, CLI, and IDE). Run
 
 ## How It Works
 
-1. `/loop <count> <prompt>` parses `<count>` (integer `>= 1`) and `<prompt>`.
-2. Each pass spawns a fresh `self` subagent (`Workspace: "inherit"`, `Model: "inherit"`) one at a time, waiting for iteration `k` to finish before starting `k + 1`.
-3. Context is cleared between passes: every iteration runs in a new conversation with zero prior chat history and receives the exact original `<prompt>`. State persists purely on disk and in git.
+1. `/loop <count> <prompt>` parses `<count>` (integer `>= 1`), `<prompt>`, and the main thread's `Conversation ID`.
+2. Each pass spawns a fresh `self` subagent (`Workspace: "inherit"`, `Model: "inherit"`) one at a time, waiting for iteration `k` to send `[LOOP_COMPLETE]` (after all edits, background tasks, and verifications settle) before starting `k + 1`.
+3. **Live main-thread telemetry:** While an iteration works, it sends concise `[LOOP_UPDATE]` messages back to the main thread via `send_message` when selecting its target, working through test/build snags or pivots, and running verifications—plus `[LOOP_WAITING]` guards when a long command backgrounds and `[LOOP_COMPLETE]` when the pass settles—so the main thread streams real-time progress and hands off reliably between iterations.
+4. Context is cleared between passes: every iteration runs in a new conversation with zero prior chat history and receives the exact original `<prompt>`. State persists strictly on disk and in git.
 
 ## Validate & Install
 

@@ -2,8 +2,8 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "agy-ralph-loop",
   "displayName": "Ralph Loop",
-  "version": "0.1.0",
-  "description": "Run a prompt N times sequentially with a fresh, cleared context window on every iteration via /loop <count> <prompt>.",
+  "version": "0.2.0",
+  "description": "Run a prompt N times sequentially with a fresh, cleared context window on every iteration and live progress telemetry back to the main thread via /loop <count> <prompt>.",
   "logo": "assets/logo.svg",
   "category": "Developer Tools",
   "keywords": [
