@@ -1,0 +1,24 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "agy-ralph-loop",
+  "displayName": "Ralph Loop",
+  "version": "0.1.0",
+  "description": "Run a prompt N times sequentially with a fresh, cleared context window on every iteration via /loop <count> <prompt>.",
+  "logo": "assets/logo.svg",
+  "category": "Developer Tools",
+  "keywords": [
+    "ralph",
+    "ralph-wiggum",
+    "loop",
+    "subagent",
+    "automation"
+  ],
+  "suggestedPrompts": [
+    "/loop 3 Run the test suite, fix one failing test, and commit the fix"
+  ],
+  "author": {
+    "name": "Buckley Robinson",
+    "url": "https://github.com/buckleyrobinson"
+  },
+  "license": "MIT"
+}
